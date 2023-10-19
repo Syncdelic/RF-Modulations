@@ -1,0 +1,40 @@
+* =========================================================================
+* SPICE Subcircuit: MC1496 Balanced Modulator
+* Author: Rodrigo Rea
+* Date: 13th October 2023
+* Version: 1.0
+* Description: This is a SPICE subcircuit for the MC1496 Balanced Modulator.
+*              It incorporates the essential building blocks including the 
+*              tail current source, input transistors, and LO quad switching
+*              transistors among others.
+      * References: MC1496 Datasheet - ON Semiconductor - October, 2006
+* =========================================================================
+
+.include 2n3904.model
+
+.subckt MC1496 1 2 3 4 5 6 8 10 12 14
+
+* === Tail Current Source ===
+Q1 6  8  20 q2n3904
+Q2 12 10 20 q2n3904
+
+* === Input Transistors ===
+Q3 6  10 21 q2n3904
+Q4 12 8  21 q2n3904
+
+* === LO Quad Switching Transistors ===
+Q5 20 4  3 q2n3904
+Q6 21 1  2 q2n3904
+Q7 3  5  22 q2n3904
+Q8 2  5  23 q2n3904
+
+* === Emitter Degeneration Resistors ===
+RE1 22 14 500
+RE2 23 14 500
+
+* === Current Mirror ===
+Q9 30 5 24 q2n3904
+Rd 24 14 500 
+
+.ends
+

@@ -1,0 +1,51 @@
+* =========================================================================
+* SPICE Model: 2N3904/MMBT3904 NPN Transistor
+* Author: Rodrigo Rea
+* Date: 13th October 2023
+* Version: 1.0
+* Description: This is a SPICE model for a 2N3904/MMBT3904 NPN transistor.
+*              It includes the essential parameters for simulation.
+* References: 2N3904 Datasheet - ON Semiconductor - September, 2001
+* =========================================================================
+
+.MODEL q2n3904 NPN(
+  + IS=4.639E-15     ; Saturation current
+  + NF=0.9995        ; Forward emission coefficient
+  + ISE=2.091E-14    ; Base-emitter saturation current
+  + NE=1.6           ; Non-ideality factor for base-emitter diode
+  + BF=160.1         ; Ideal maximum forward beta
+  + IKF=0.12         ; Corner current for forward-beta
+  + VAF=98.69        ; Forward Early voltage
+  + NR=1.001         ; Reverse emission coefficient
+  + ISC=3.257E-12    ; Base-collector saturation current
+  + NC=1.394         ; Non-ideality factor for base-collector diode
+  + BR=5.944         ; Ideal maximum reverse beta
+  + IKR=0.06         ; Corner current for reverse-beta
+  + VAR=19.29        ; Reverse Early voltage
+  + RB=1             ; Base series resistance
+  + IRB=1E-6         ; Current for base series resistance knee
+  + RBM=1            ; Minimum base series resistance
+  + RE=0.3614        ; Emitter resistance
+  + RC=1.755         ; Collector resistance
+  + XTB=0            ; Saturation current temp. exp
+  + EG=1.11          ; Bandgap voltage
+  + XTI=3            ; Saturation current exp.
+  + CJE=5.631E-12    ; B-E depletion capacitance
+  + VJE=0.7002       ; B-E built-in potential
+  + MJE=0.3385       ; B-E grading coefficient
+  + TF=3.001E-10     ; Forward transit time
+  + XTF=27           ; Coeff. for bias dependence
+  + VTF=1.461        ; Voltage for TF with max XTF
+  + ITF=0.2723       ; High current roll-off
+  + PTF=0            ; Excess phase
+  + CJC=4.949E-12    ; B-C depletion capacitance
+  + VJC=0.5969       ; B-C built-in potential
+  + MJC=0.1928       ; B-C grading coefficient
+  + XCJC=0.864       ; Fraction of CJC connected to internal base
+  + TR=9.4E-8        ; Reverse transit time
+  + CJS=0            ; Substrate capacitance
+  + VJS=0.75         ; Substrate built-in potential
+  + MJS=0.333        ; Substrate grading coefficient
+  + FC=0.5582        ; Forward-bias depletion cap. coefficient
+)
+

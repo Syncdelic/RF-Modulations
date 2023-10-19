@@ -7,7 +7,7 @@
 *              It incorporates the essential building blocks including the 
 *              tail current source, input transistors, and LO quad switching
 *              transistors among others.
-      * References: MC1496 Datasheet - ON Semiconductor - October, 2006
+* References: MC1496 Datasheet - ON Semiconductor - October, 2006
 * =========================================================================
 
 .include 2n3904.model

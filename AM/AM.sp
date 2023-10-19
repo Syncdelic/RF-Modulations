@@ -10,8 +10,8 @@
 
 * === Voltage Sources ===
 * Carrier and Message signal sources
-Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 34.35m 100k) 
-Vmessage signal_in 0 dc 0 ac 1 SIN(0 300m 10k)
+Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 35.3556m 100k) 
+Vmessage signal_in 0 dc 0 ac 1 SIN(0 424.2651m 10k)
 Vcc vcc 0 dc 12V
 Vee 0 vee dc 8V
  

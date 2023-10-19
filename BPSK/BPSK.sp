@@ -1,7 +1,7 @@
-*Project: PSK Mixer Simulation
+*Project: BPSK Mixer Simulation
 *Author: Rodrigo Rea
 *Date: October 19th 2023
-*Description: Simulation of PSK using MC1496 IC.
+*Description: Simulation of BPSK using MC1496 IC.
 
 .param r_load=51 r_feed=750 c_filter=0.1u
 
@@ -16,7 +16,7 @@ Vcc vcc 0 dc 12V
 Vee 0 vee dc 8V
 
 * Phase signal based on Vmessage
-Bphase phase 0 V=V(signal_in) > 0.3 ? pi : 0
+Bphase phase 0 V=V(signal_in) > 0 ? pi : 0
 
 * Phase modulator
 Bmod carrier_out_pos 0 V=cos(2*pi*100k*time + V(phase))

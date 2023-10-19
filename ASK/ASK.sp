@@ -11,7 +11,7 @@
 * === Voltage Sources ===
 * Carrier and Message signal sources
 Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 84.85m 100k) 
-Vmessage signal_in 0 dc 0 ac 1 PULSE(0.3 70.71m 0 1n 1n 50u 100u)
+Vmessage signal_in 0 dc 0 ac 1 PULSE(0.3 424.2455m 0 1n 1n 50u 100u)
 Vcc vcc 0 dc 12V
 Vee 0 vee dc 8V
  
@@ -27,8 +27,8 @@ r8 mix_in_pos mix_in_neg 1k
 r9 vcc carrier_out_pos 3.9k
 r10 vcc carrier_out_neg 3.9k
 r11 mix_aux 0 6.8k
-r12 mix_in_pos mix_mid 25k
-r13 mix_mid mix_in_neg 25k
+r12 mix_in_pos mix_mid 43k
+r13 mix_mid mix_in_neg 8.4k
 r14 mix_mid vee 1
 
 * === Capacitors ===

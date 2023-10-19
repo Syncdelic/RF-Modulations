@@ -10,8 +10,8 @@
 
 * === Voltage Sources ===
 * Carrier and Message signal sources
-Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 35.3556m 100k) 
-Vmessage signal_in 0 dc 0 ac 1 SIN(0 424.2651m 10k)
+Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 25m 100k) 
+Vmessage signal_in 0 dc 0 ac 1 SIN(0 24m 10k)
 Vcc vcc 0 dc 12V
 Vee 0 vee dc 8V
  
@@ -27,8 +27,8 @@ r8 mix_in_pos mix_in_neg 1k
 r9 vcc carrier_out_pos 3.9k
 r10 vcc carrier_out_neg 3.9k
 r11 mix_aux 0 6.8k
-r12 mix_in_pos mix_mid 49.5k
-r13 mix_mid mix_in_neg 50
+r12 mix_in_pos mix_mid 26.5k
+r13 mix_mid mix_in_neg 23.5k
 r14 mix_mid vee 1
 
 * === Capacitors ===
@@ -40,16 +40,20 @@ XU1 signal_in mix_in_pos mix_in_neg carrier_aux mix_aux carrier_out_pos mix_out 
 
 .control
 tran 0.1u 300u
-plot v(carrier_out_pos)
-.endc
-.control
-tran 0.1u 1
 let vout = v(carrier_out_pos)
+plot v(out)
+wrdata t_output.txt v(out) 
+hardcopy t_output.png v(out)
+
+reset
+
+tran 0.1u 1
 linearize vout 
 set specwindow=blackman
 fft vout
 plot db(vout) xlimit 0 1Meg
-wrdata output.txt vout
+wrdata f_output.txt vout
+hardcopy f_output.png db(vout)
 .endc
-.end
 
+.end

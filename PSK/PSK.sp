@@ -1,7 +1,7 @@
-*Project: ASK Mixer Simulation
+*Project: PSK Mixer Simulation
 *Author: Rodrigo Rea
-*Date: October 13th 2023
-*Description: Simulation of ASK using MC1496 IC.
+*Date: October 19th 2023
+*Description: Simulation of PSK using MC1496 IC.
 
 .param r_load=51 r_feed=750 c_filter=0.1u
 
@@ -11,9 +11,15 @@
 * === Voltage Sources ===
 * Carrier and Message signal sources
 Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 84.85m 100k) 
-Vmessage signal_in 0 dc 0 ac 1 PULSE(0.3 424.2455m 0 1n 1n 50u 100u)
+Vmessage signal_in 0 dc 0 ac 1 PULSE(0 424.2455m 0 1n 1n 50u 100u)
 Vcc vcc 0 dc 12V
 Vee 0 vee dc 8V
+
+* Phase signal based on Vmessage
+Bphase phase 0 V=V(signal_in) > 0.3 ? pi : 0
+
+* Phase modulator
+Bmod carrier_out_pos 0 V=cos(2*pi*100k*time + V(phase))
  
 * === Resistors ===
 r1 signal_in 0 {r_load}

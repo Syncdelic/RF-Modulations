@@ -4,16 +4,14 @@
 *Description: Simulation of ASK using MC1496 IC.
 
 .param r_load=51 r_feed=750 c_filter=0.1u
-
-* === External Models and Libraries ===
 .include MC1496.lib
 
 * === Voltage Sources ===
+Vcc vcc 0 dc 12V
+Vee 0 vee dc 8V
 * Carrier and Message signal sources
 Vcarrier carrier_in 0 dc 0 ac 1 SIN(0 84.85m 100k) 
 Vmessage signal_in 0 dc 0 ac 1 PULSE(0.3 424.2455m 0 1n 1n 50u 100u)
-Vcc vcc 0 dc 12V
-Vee 0 vee dc 8V
  
 * === Resistors ===
 r1 signal_in 0 {r_load}
@@ -39,17 +37,20 @@ c2 carrier_in filter_in {c_filter}
 XU1 signal_in mix_in_pos mix_in_neg carrier_aux mix_aux carrier_out_pos mix_out filter_in carrier_out_neg vee MC1496
 
 .control
+op
 tran 0.1u 300u
-plot v(carrier_out_pos)
-.endc
-.control
-tran 0.1u 1
 let vout = v(carrier_out_pos)
-linearize vout 
+plot vout
+wrdata t_output.raw vout
+hardcopy t_output.ps vout
+tran 0.1u 1
+let vout =(carrier_out_pos)
+linearize vout
 set specwindow=blackman
 fft vout
 plot db(vout) xlimit 0 1Meg
-wrdata output.txt vout
+wrdata f_output.raw vout
+hardcopy f_output.ps db(vout)
 .endc
-.end
 
+.end

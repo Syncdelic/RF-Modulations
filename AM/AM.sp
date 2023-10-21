@@ -44,7 +44,7 @@ plot vout
 wrdata t_output.raw vout 
 hardcopy t_output.ps vout
 tran 0.1u 1
-let vout =(carrier_out_pos)
+let vout = v(carrier_out_pos)
 linearize vout 
 set specwindow=blackman
 fft vout
